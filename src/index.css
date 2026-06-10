@@ -1,1 +1,11 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+@theme {
+  --color-background-main: var(--color-zinc-200);
+  --color-primary: #c53714;
+}
+
+html, body {
+  background-color: var(--color-background-main);
+  color: var(--color-zinc-900);
+}
