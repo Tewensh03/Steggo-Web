@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "../components/Input";
 import { useSignup } from "../hooks/useAuth";
+import { Button } from "../components/Button";
 
 const SignupPage = () => {
     const { mutate: signup, isPending, isError, error: serverError, reset } = useSignup();
@@ -40,7 +41,7 @@ const SignupPage = () => {
         <div className="h-screen w-full bg-primary flex justify-center items-center px-4">
             <div className="w-full max-w-md bg-background-main rounded-xl shadow-xl p-8">
 
-                <div className="text-center mb-6">
+                <div className="text-center mb-4">
                     <h1 className="text-2xl font-bold text-zinc-900">Create an Account</h1>
                     <p className="text-sm text-zinc-500 mt-1">Sign up to get started</p>
                 </div>
@@ -105,13 +106,14 @@ const SignupPage = () => {
                         </div>
                     )}
 
-                    <button
-                        type="submit"
+                    <Button
+                        isLoading={isPending}
+                        loadingText="Creating account..."
                         disabled={isPending}
-                        className="w-full mt-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-md transition-colors duration-200 cursor-pointer"
+                        className="mt-4"
                     >
-                        {isPending ? "Creating account..." : "Register"}
-                    </button>
+                        Register
+                    </Button>
                 </form>
 
                 <div className="text-center mt-6">

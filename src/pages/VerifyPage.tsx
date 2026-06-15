@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "../components/Input";
 import { useResendVerification, useVerify } from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "../components/Button";
 
 const VerifyPage = () => {
     const location = useLocation();
@@ -126,13 +127,13 @@ const VerifyPage = () => {
                         </div>
                     )}
 
-                    <button
-                        type="submit"
+                    <Button 
+                        isLoading={isPending} 
+                        loadingText="Verifying..."
                         disabled={isWorking}
-                        className="w-full mt-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-md transition-colors duration-200 cursor-pointer disabled:opacity-50"
                     >
-                        {isPending ? "Verifying..." : "Verify Code"}
-                    </button>
+                        Verify Code
+                    </Button>
                 </form>
 
                 <div className="text-center mt-6">

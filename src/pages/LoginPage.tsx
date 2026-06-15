@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "../components/Input";
 import { useLogin } from "../hooks/useAuth";
+import { Button } from "../components/Button";
 
 const LoginPage = () => {
     const { mutate: login, isPending, isError, error: serverError, reset } = useLogin();
@@ -82,13 +83,13 @@ const LoginPage = () => {
                         </div>
                     )}
 
-                    <button
-                        type="submit"
+                    <Button 
+                        isLoading={isPending}
+                        loadingText="Logging in..."
                         disabled={isPending}
-                        className="w-full mt-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 text-white font-medium rounded-md transition-colors duration-200 cursor-pointer"
                     >
-                        {isPending ? "Logging in..." : "Log In"}
-                    </button>
+                        Log In
+                    </Button>
                 </form>
 
                 <div className="text-center mt-6">
